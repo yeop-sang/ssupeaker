@@ -1,17 +1,6 @@
 version: '3.8'
 
 services:
-  db:
-    image: mysql:8.0
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD} # root 계정의 비밀번호
-      MYSQL_DATABASE: ${MYSQL_DATABASE}       # 생성할 데이터베이스 이름
-      MYSQL_USER: ${MYSQL_USER}             # 생성할 사용자 이름
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD}       # 사용자의 비밀번호
-    volumes:
-      - db_data:/var/lib/mysql
-
   app:
     build: 
       context: .
@@ -24,8 +13,3 @@ services:
       - ./music_library:/app/music_library # 로컬 음악 라이브러리를 컨테이너에 연결
     env_file:
       - .env    # .env 파일에서 환경 변수를 로드
-    depends_on:
-      - db      # db 서비스가 준비된 후에 app 서비스 시작
-
-volumes:
-  db_data: # MySQL 데이터 영속성을 위한 명명된 볼륨 
