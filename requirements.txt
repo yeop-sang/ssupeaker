@@ -1,0 +1,29 @@
+fastapi
+uvicorn[standard]
+safetensors
+torch
+torchvision
+torchaudio
+openai-whisper
+transformers
+numpy<2.0
+scipy
+pytubefix
+selenium
+webdriver-manager
+beautifulsoup4
+huggingface-hub
+gradio_client
+pytest
+python-multipart
+pytest-mock 
+tqdm 
+
+# --- Dependency Conflict Resolution ---
+# Pinning urllib3 to a version < 2.0 to resolve conflicts between
+# boto3/botocore and other libraries. This significantly speeds up
+# the Docker build process by preventing pip from backtracking.
+urllib3==1.26.18
+boto3==1.34.113
+botocore==1.34.113
+requests==2.31.0 
